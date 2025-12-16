@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>K-Life 人生K线</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="logo">K-Life</h1>
+      <p class="tagline">八字 × 量化 · 绘制你的百年运势</p>
+    </header>
+
+    <!-- Form -->
+    <main class="form-card">
+      <form id="baziForm">
+        <!-- Name -->
+        <div class="field">
+          <label>姓名 <span class="required">*</span></label>
+          <input type="text" id="name" placeholder="请输入姓名" required>
+        </div>
+
+        <!-- Gender -->
+        <div class="field">
+          <label>性别</label>
+          <div class="toggle-group">
+            <button type="button" class="toggle-btn active" data-value="male">男</button>
+            <button type="button" class="toggle-btn" data-value="female">女</button>
+          </div>
+        </div>
+
+        <!-- Birth Info (Date + Hour Combined) -->
+        <div class="field">
+          <label>出生信息</label>
+          <div class="birth-info-card">
+            <div class="calendar-toggle">
+              <button type="button" class="calendar-btn active" data-type="solar">公历</button>
+              <button type="button" class="calendar-btn" data-type="lunar">农历</button>
+            </div>
+            <div class="date-row">
+              <div class="date-field">
+                <select id="year" class="date-select">
+                  <!-- 年份选项由 JS 生成 -->
+                </select>
+                <span>年</span>
+              </div>
+              <div class="date-field">
+                <select id="month" class="date-select">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8" selected>8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+                <span>月</span>
+              </div>
+              <div class="date-field">
+                <select id="day" class="date-select">
+                  <!-- 日期选项由 JS 生成 -->
+                </select>
+                <span>日</span>
+              </div>
+            </div>
+            <div class="hour-row">
+              <select id="hour" class="hour-select">
+                <option value="">请选择时辰</option>
+                <option value="0">子时 (23:00-01:00)</option>
+                <option value="1">丑时 (01:00-03:00)</option>
+                <option value="2">寅时 (03:00-05:00)</option>
+                <option value="3">卯时 (05:00-07:00)</option>
+                <option value="4">辰时 (07:00-09:00)</option>
+                <option value="5">巳时 (09:00-11:00)</option>
+                <option value="6">午时 (11:00-13:00)</option>
+                <option value="7">未时 (13:00-15:00)</option>
+                <option value="8">申时 (15:00-17:00)</option>
+                <option value="9">酉时 (17:00-19:00)</option>
+                <option value="10">戌时 (19:00-21:00)</option>
+                <option value="11">亥时 (21:00-23:00)</option>
+              </select>
+            </div>
+            <div id="lunarLeap" class="lunar-leap hidden">
+              <label class="checkbox-label">
+                <input type="checkbox" id="isLeapMonth">
+                <span>闰月</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bazi Preview -->
+        <div id="baziPreview" class="bazi-preview">
+          <span class="preview-placeholder">选择时辰后显示八字</span>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="submit-btn">生成人生K线</button>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <p>仅供娱乐 · 命由己造</p>
+    </footer>
+  </div>
+
+  <script src="bazi.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

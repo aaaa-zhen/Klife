@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>命盘结果 - K-Life</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body class="result-page">
+  <div class="container">
+    <!-- Top Bar -->
+    <nav class="topbar">
+      <a href="index.html" class="back-btn">← 返回</a>
+      <span class="topbar-title">命盘分析</span>
+      <span></span>
+    </nav>
+
+    <!-- User Info -->
+    <section class="user-section">
+      <div class="user-info">
+        <span id="userName" class="user-name">-</span>
+        <span id="userMeta" class="user-meta">-</span>
+      </div>
+      <div id="baziFour" class="bazi-four">
+        <!-- 四柱显示 -->
+      </div>
+    </section>
+
+    <!-- Score Overview -->
+    <section class="score-section">
+      <div class="main-score">
+        <div class="score-ring">
+          <svg viewBox="0 0 100 100">
+            <circle class="ring-bg" cx="50" cy="50" r="45"/>
+            <circle id="scoreRing" class="ring-fill" cx="50" cy="50" r="45"/>
+          </svg>
+          <div class="score-inner">
+            <span id="mainScore" class="score-num">--</span>
+            <span class="score-label">综合评分</span>
+          </div>
+        </div>
+      </div>
+      <div class="sub-scores">
+        <div class="sub-score-item">
+          <span class="sub-label">财运</span>
+          <span id="wealthScore" class="sub-value">--</span>
+        </div>
+        <div class="sub-score-item">
+          <span class="sub-label">事业</span>
+          <span id="careerScore" class="sub-value">--</span>
+        </div>
+        <div class="sub-score-item">
+          <span class="sub-label">感情</span>
+          <span id="marriageScore" class="sub-value">--</span>
+        </div>
+        <div class="sub-score-item">
+          <span class="sub-label">健康</span>
+          <span id="healthScore" class="sub-value">--</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pattern -->
+    <section class="card">
+      <h3 class="card-title">格局</h3>
+      <div class="pattern-content">
+        <span id="patternType" class="pattern-tag">-</span>
+        <p id="patternDesc" class="pattern-desc">-</p>
+      </div>
+    </section>
+
+    <!-- K-Line Chart -->
+    <section class="card chart-card">
+      <h3 class="card-title">人生K线</h3>
+      <div class="chart-tabs">
+        <button class="chart-tab active" data-type="total">总运</button>
+        <button class="chart-tab" data-type="wealth">财运</button>
+        <button class="chart-tab" data-type="career">事业</button>
+        <button class="chart-tab" data-type="marriage">感情</button>
+        <button class="chart-tab" data-type="health">健康</button>
+      </div>
+      <div class="chart-wrapper">
+        <canvas id="klineChart"></canvas>
+      </div>
+      <div class="chart-hint">点击图表查看流年详情</div>
+    </section>
+
+    <!-- Two Column Grid for Web -->
+    <div class="result-grid">
+      <!-- DaYun -->
+      <section class="card">
+        <h3 class="card-title">大运</h3>
+        <div id="dayunList" class="dayun-list">
+          <!-- 大运列表 -->
+        </div>
+      </section>
+
+      <!-- Reports -->
+      <section class="card">
+        <h3 class="card-title">详批</h3>
+        <div class="report-tabs">
+          <button class="report-tab active" data-tab="career">事业</button>
+          <button class="report-tab" data-tab="wealth">财运</button>
+          <button class="report-tab" data-tab="marriage">婚姻</button>
+          <button class="report-tab" data-tab="health">健康</button>
+        </div>
+        <div id="reportText" class="report-text">-</div>
+      </section>
+    </div>
+
+    <!-- Suggestions -->
+    <section class="card">
+      <h3 class="card-title">开运指南</h3>
+      <div id="suggestions" class="suggestions">
+        <!-- 建议 -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>仅供娱乐 · 命由己造</p>
+    </footer>
+  </div>
+
+  <!-- Year Detail Modal -->
+  <div id="yearModal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="modalTitle">-</h4>
+        <button class="modal-close">×</button>
+      </div>
+      <div id="modalScores" class="modal-scores"></div>
+      <p id="modalReason" class="modal-reason">-</p>
+    </div>
+  </div>
+
+  <script src="bazi.js"></script>
+  <script src="api.js"></script>
+  <script src="chart.js"></script>
+  <script src="result.js"></script>
+</body>
+</html>
