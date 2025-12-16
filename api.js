@@ -112,6 +112,12 @@ const AI_API = {
 3. 每年包含6个维度评分(0-100): total, wealth, career, marriage, family, health
 4. chartPoints必须包含完整的70个数据点(1-70岁)
 5. 大运每10年一步，起运前为"童限"
+6. **重要：评分要有明显波动和起伏！**
+   - 好的年份可以到85-95分，差的年份可以低至30-50分
+   - 根据流年干支与命局的生克关系，体现运势高低
+   - 逢冲克刑害之年要明显降低，逢合会生扶之年要明显提高
+   - 不同维度的评分要有差异，不要都一样
+   - 人生要有高峰低谷，K线图要像股票一样有波动
 
 **输出JSON格式:**
 {
@@ -133,7 +139,7 @@ const AI_API = {
     "noblePeople": ["属相1", "属相2"]
   },
   "chartPoints": [
-    {"age": 1, "year": ${birthYear}, "daYun": "童限", "ganZhi": "干支", "score": 60, "reason": "流年批语...", "scores": {"total": 60, "wealth": 60, "career": 60, "marriage": 60, "family": 60, "health": 60}},
+    {"age": 1, "year": ${birthYear}, "daYun": "童限", "ganZhi": "干支", "score": 60, "reason": "流年批语...", "scores": {"total": 60, "wealth": 55, "career": 45, "marriage": 70, "family": 65, "health": 80}},
     ...共70个数据点
   ]
 }`;
